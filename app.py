@@ -24,8 +24,9 @@ def run_initial_analysis():
     except Exception as e:
         print(f"初期分析でエラー: {str(e)}")
 
-# アプリ起動時に別スレッドで一括分析を実行
-threading.Thread(target=run_initial_analysis, daemon=True).start()
+# 本番環境では起動時の一括分析を無効化（タイムアウト防止）
+# 代わりにスケジューラーで定期実行
+# threading.Thread(target=run_initial_analysis, daemon=True).start()
 
 @app.route('/')
 def index():
