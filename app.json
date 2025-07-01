@@ -1,0 +1,35 @@
+{
+  "name": "YouTube Comment Analysis",
+  "description": "YouTube動画のコメント感情分析とランキング表示アプリケーション",
+  "image": "heroku/python",
+  "repository": "https://github.com/yourusername/YoutubeProc",
+  "keywords": ["python", "flask", "youtube", "sentiment-analysis", "analytics"],
+  "env": {
+    "YOUTUBE_API_KEY": {
+      "description": "YouTube Data API v3のAPIキー",
+      "required": true
+    },
+    "SECRET_KEY": {
+      "description": "Flaskアプリケーションの秘密鍵",
+      "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "addons": [
+    "heroku-postgresql:mini"
+  ]
+}
